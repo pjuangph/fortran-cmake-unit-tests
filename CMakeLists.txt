@@ -9,6 +9,8 @@
 project(GlennHT)
 cmake_minimum_required(VERSION 3.13)
 enable_language(C Fortran)
+set(CMAKE_BUILD_TYPE "debug") # debug OR release
+
 
 if (NOT ${APPLE})
     set(CMAKE_FC_COMPILER /opt/nvidia/hpc_sdk/Linux_x86_64/21.9/compilers/bin/nvfortran)
