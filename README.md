@@ -1,11 +1,19 @@
 # Using CMake and CTests with Fortran and open acc
-This repository gives an example of how you can use cmake to auto-generate makefiles and unit tests
+This repository gives an example of how you can use cmake to auto-generate makefiles and unit tests. 
+Inspiration for creating this example comes from:
+- https://github.com/SethMMorton/cmake_fortran_template
+- http://johannes.tax/Unit_testing_with_Fortran_and_CTest.html  
 
 ## Why is this important
+### Dependancies
 Makefiles are needed to compile c code and fortran code. Dependenacies are compiled in order before they are used. In a large program it's hard to discern which dependancies should be compiled first, middle, and last. Often developers are worried about code that works while also tinkering with makefile to make sure it compiles. This can take a lot of time and make it harder for other developers to contribute code. 
+
+### Organization
 
 Makefiles are messy. Code is often compiled directly in the source folder which can lead to a lot of .o files for linking along with executables combined with your code. This is disorganized. All compilation should occur in a separate folder that way the developer is less distracted. 
 
+### Platform compatibility
+Making a makefile that can compile across platforms can be very difficult. You might end up with many different makefiles and find yourself compiling using `make -f [makefile for windows]` 
 
 ## Enter Cmake
 Cmake handles the depenancies for you. You simply create a library and link it. An example of creating a library is shown in the [modules folder](https://github.com/pjuangph/fortran-cmake-unit-tests/tree/main/modules/material_properties). Cmake allows you to organize modules in folder groups but when they are built they are moved into build/libs folder. Organization can be useful when you have a large program that has many functionalities. 
@@ -14,6 +22,15 @@ Cmake handles the depenancies for you. You simply create a library and link it. 
 ### Multiple Executable Support
 It is possible to compile multiple executables in a single makefile. In this example 2 executables are compiled, Helloworld and main.f90. 
 
+### Cross Platform compilation
+Cmake works on windows, mac, linux x86 and arm so those new m1 macs can compile fortran code. Note: gfortran doesn't work with m1 macs, you have to use gcc and documentation for fortran with gcc is very limited. 
+
+### Support for Git
+Cmake can add modules from git by simply passing a url. 
+
+## Resources for CMake
+Check out this youtube playlist 
+https://www.youtube.com/watch?v=nlKcXPUJGwA&list=PLalVdRk2RC6o5GHu618ARWh0VO0bFlif4&t=0s
 
 # How to compile
 - Step 1 Configuring the build directory: run ./configure.sh script. This sets up the makefile.
