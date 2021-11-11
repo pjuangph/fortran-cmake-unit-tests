@@ -33,3 +33,8 @@ Note: CMake doesn't work with .f03 or f08 file extensions. Use .f90 for cmake to
 
 If you are using mac and remote ssh, make sure you set the timeout to something longer than 15 sec https://stackoverflow.com/a/62423178/1599606 
 
+# Best Practices for Fortran
+- You can use the `include` but provide a relative reference to the file otherwise you get errors in your intellisense
+- Don't try to use `#include` like you do in C. Fortran is not C and this is weird and breaks intellisense
+- Tabs should be 4 spaces not 0 not 1 not 2 but 4. Reading a giant loop with 2 tab spaces is very annoying. 
+- Comment your code using doxygen standards https://www.doxygen.nl/manual/docblocks.html#fortranblocks This allows websites to be built around your code so that people can search your comments.
