@@ -35,14 +35,19 @@ add_subdirectory(modules/material_properties)
 target_link_libraries(main lib_material_properties)
 
 
-# Unit testing 
+## Unit testing 
 enable_testing()
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules) # Any built libraries    
+#[[ This include contains 
+the function add_fortran_test_executable ]] 
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules) 
 INCLUDE(${CMAKE_MODULE_PATH}/SetCTest.cmake) 
 
 add_fortran_test_executable (
     testsuite
     "tests/test_dry_air.f90"
-    "tests/test_helloworld.f90")
-
-# add_test(NAME test_material_properties COMMAND Test)
+    "tests/test_helloworld.f90"
+    )
+# Link libraries to testsuite
+target_link_libraries (testsuite 
+        lib_material_properties
+    )

@@ -25,7 +25,17 @@ function (add_fortran_test_executable TARGET)
     #   Make sure you add the library below
     # Args
     #   TARGET - list of functions 
+    message("ARGC=\"${ARGC}\"") # Argument count
+    message("ARGN=\"${ARGN}\"") # Optional Arguments
+    message("ARGV=\"${ARGV}\"") # All arguments 
+    message("ARGV0=\"${ARGV0}\"") # First Argument
+    message("ARGV1=\"${ARGV1}\"") # Secondd Argument
+
+    list(SUBLIST ${TARGET} 0 -1 TARGETS)
+    message("TARGETS= ${TARGETS}")
+
     set (TEST_FILES ${ARGN})
+
     mangle_fortran_filename_list (TEST_FILES_MANGLED ${TEST_FILES})
 
     create_test_sourcelist (_ main.c ${TEST_FILES_MANGLED})
@@ -35,7 +45,6 @@ function (add_fortran_test_executable TARGET)
     # include all custom libraries below e.g. lib_material_properties
     target_link_libraries (${TARGET} 
         ${TARGET}_fortran
-        lib_material_properties
     )
     
 
