@@ -14,9 +14,11 @@ set(CMAKE_BUILD_TYPE "debug") # debug OR release
 
 if (NOT ${APPLE})
     set(CMAKE_FC_COMPILER /opt/nvidia/hpc_sdk/Linux_x86_64/21.9/compilers/bin/nvfortran)
+    message(STATUS "Fortran compiler: ${CMAKE_FC_COMPILER}")
     add_compile_options(-acc -O3 -Mfree -Mr8 -i8 -Mextend -Mpreprocess -Minfo=accel -gpu=managed -Mcuda -mp=gpu -L$(CUDA_PATH)/lib64 -lnvToolsExt)
 else()
     get_filename_component(FCNAME ${CMAKE_Fortran_COMPILER} NAME)
+    message(STATUS "Fortran compiler: ${FCNAME}")
     if(FCNAME STREQUAL "pgf90")
         unset(CMAKE_SHARED_LIBRARY_LINK_Fortran_FLAGS)
     endif(FCNAME STREQUAL "pgf90")
