@@ -3,8 +3,7 @@
 
 module material_parameters
     implicit none
-    include "config.f90"
-    INTEGER(Kind=I_Kind), PARAMETER :: DryAir_Cp_pOrder =  4 !quadratic polynomial
-    INTEGER(Kind=I_Kind), PARAMETER :: DryAir_Cp_nIntv  = 19
+    INTEGER(Kind=2), PARAMETER :: DryAir_Cp_pOrder =  4 !quadratic polynomial
+    INTEGER(Kind=2), PARAMETER :: DryAir_Cp_nIntv  = 19
 
 end module material_parameters

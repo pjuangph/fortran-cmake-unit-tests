@@ -4,7 +4,6 @@
 module dry_air
     use material_parameters, only : DryAir_Cp_nIntv,DryAir_Cp_pOrder
     implicit none
-    include "config.f90"
     
     real(Kind=8), dimension(4,19), parameter :: &
     DryAir_Cp_Coeff = RESHAPE( &
@@ -43,8 +42,8 @@ module dry_air
         real(kind=8)               :: Cp !< Cp (J/Kg)
 
         ! iterators 
-        integer(kind=8)            :: i 
-        integer(kind=8)            :: j
+        integer(kind=2)            :: i 
+        integer(kind=2)            :: j
         !$acc seq
         do i = 1, 20 ! Loop through 
             if(T.lt.DryAir_Cp_T0intv(i)) exit

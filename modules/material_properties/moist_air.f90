@@ -4,9 +4,8 @@
 module moist_air
     use material_parameters, only : DryAir_Cp_nIntv,DryAir_Cp_pOrder
     implicit none
-    include "config.f90"
     
-    real(Kind=R_Kind), dimension(4,19), parameter :: &
+    real(Kind=8), dimension(4,19), parameter :: &
     DryAir_Cp_Coeff = RESHAPE( &
     (/1.157096138402E+03,-2.074718253302E+00, 9.709780080412E-03,-1.545867191660E-05,    &
     1.033823323739E+03,-2.311978350176E-01, 5.050053930708E-04,-1.309655390625E-07,    &
@@ -29,7 +28,7 @@ module moist_air
     9.005246039995E+02, 3.557843193484E-01,-1.235224783379E-04, 1.603503008192E-08 /), &
     (/4,19/))
 
-    real(Kind=R_Kind), dimension(20), parameter :: DryAir_Cp_T0intv= (/ &
+    real(Kind=8), dimension(20), parameter :: DryAir_Cp_T0intv= (/ &
     120.0,  220.0,  320.0,  420.0,  520.0,  620.0,  720.0,  820.0,  920.0, 1020.0, &
     1120.0, 1220.0, 1320.0, 1420.0, 1520.0, 1620.0, 1720.0, 1820.0, 1920.0, 2000.0/)
 
@@ -40,12 +39,12 @@ module moist_air
     !! function
     !! @param T Temperature in Kelvin
     function MoistAirCp(T) result(Cp)
-        real(kind=R_Kind), intent (in)  :: T !< Temperature (K)
-        real(kind=R_Kind)               :: Cp !< Cp (J/Kg)
+        real(kind=8), intent (in)  :: T !< Temperature (K)
+        real(kind=8)               :: Cp !< Cp (J/Kg)
 
         ! iterators 
-        integer(kind=I_Kind)            :: i 
-        integer(kind=I_Kind)            :: j
+        integer(kind=2)            :: i 
+        integer(kind=2)            :: j
         !$acc seq
         do i = 1, 20 ! Loop through 
             if(T.lt.DryAir_Cp_T0intv(i)) exit
