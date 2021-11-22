@@ -45,6 +45,7 @@ function (add_fortran_test_executable TARGET)
     # include all custom libraries below e.g. lib_material_properties
     target_link_libraries (${TARGET} 
         ${TARGET}_fortran
+        lib_material_properties
     )
     
 
