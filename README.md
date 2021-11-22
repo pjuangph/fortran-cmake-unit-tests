@@ -33,10 +33,16 @@ Check out this youtube playlist
 https://www.youtube.com/watch?v=nlKcXPUJGwA&list=PLalVdRk2RC6o5GHu618ARWh0VO0bFlif4&t=0s
 
 # How to compile
+On NAS you need to load cmake module
+> module use /nasa/modulefiles/testing; module load pkgsrc/2021Q1 
+Older cmake < 3.22 cannot include libraries to executables after they have been defined inside a function
+
 - Step 1 Configuring the build directory: run ./configure.sh script. This sets up the makefile.
 - Step 2 Building the code: run ./build.sh script which navigates to the build directory and calls make
 - Step 3 Running all Unit tests: run ./run_tests.sh to run unit tests using CTests. Note this runs all the test. To run specific tests you can simply navigate to build folder and run ./testsuite [test number] 
 - Step 4 Cleaning up: this is as simple as deleting the build folder or running ./clean.sh 
+
+
 
 # Using Intellisense to error check before compiling
 Download and install visual studio code https://code.visualstudio.com 
