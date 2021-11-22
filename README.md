@@ -35,8 +35,8 @@ https://www.youtube.com/watch?v=nlKcXPUJGwA&list=PLalVdRk2RC6o5GHu618ARWh0VO0bFl
 # How to compile
 On NAS you need to load cmake module
 > module use /nasa/modulefiles/testing; module load pkgsrc/2021Q1 
-Older cmake < 3.22 cannot include libraries to executables after they have been defined inside a function
 
+Older cmake < 3.22 cannot include libraries to executables after they have been defined inside a function
 - Step 1 Configuring the build directory: run ./configure.sh script. This sets up the makefile.
 - Step 2 Building the code: run ./build.sh script which navigates to the build directory and calls make
 - Step 3 Running all Unit tests: run ./run_tests.sh to run unit tests using CTests. Note this runs all the test. To run specific tests you can simply navigate to build folder and run ./testsuite [test number] 
