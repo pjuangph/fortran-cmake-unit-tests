@@ -44,14 +44,13 @@ module dry_air
         ! iterators 
         integer(kind=2)            :: i 
         integer(kind=2)            :: j
-        !$acc seq
+        
         do i = 1, 20 ! Loop through 
             if(T.lt.DryAir_Cp_T0intv(i)) exit
         end do 
         print *,"i = ", i
         i=i-1
         
-        !$acc seq
         Cp=DryAir_Cp_Coeff(4,i)
         do j = 3, 1,-1
             Cp=Cp*T+DryAir_Cp_Coeff(j,i)

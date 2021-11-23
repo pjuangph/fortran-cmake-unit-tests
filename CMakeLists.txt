@@ -16,7 +16,9 @@ if (UNIX)
     set(CMAKE_Fortran_COMPILER nvfortran)
     get_filename_component(FCNAME ${CMAKE_Fortran_COMPILER} NAME)
     message(STATUS "Fortran compiler: ${FCNAME}")
-    add_compile_options(-acc -O3 -Mfree -Mr8 -i8 -Mextend -Mpreprocess -Minfo=accel -gpu=managed -Mcuda -mp=gpu) # -L$(CUDA_PATH)/lib64 -lnvToolsExt
+    SET(CMAKE_Fortran_FLAGS_DEBUG "-g -O0 -acc -Mextend -Mpreprocess -Minfo=accel -gpu=managed -Mcuda -mp=gpu")
+    SET(CMAKE_Fortran_FLAGS_RELEASE "-fast -O3 -acc -Mextend -Mpreprocess -Minfo=accel -gpu=managed -Mcuda -mp=gpu")
+    
 elseif(APPLE)
     get_filename_component(FCNAME ${CMAKE_Fortran_COMPILER} NAME)
     message(STATUS "Fortran compiler: ${FCNAME}")
@@ -46,11 +48,11 @@ the function add_fortran_test_executable ]]
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules) 
 INCLUDE(${CMAKE_MODULE_PATH}/SetCTest.cmake) # <- add any libraries to this file
 
-add_fortran_test_executable (
-    testsuite
-    "tests/test_dry_air.f90"
-    "tests/test_helloworld.f90"
-    )
+# add_fortran_test_executable (
+#     testsuite
+#     "tests/test_dry_air.f90"
+#     "tests/test_helloworld.f90"
+#     )
 
 # # Link libraries to testsuite - this works with latest version of cmake 
 # target_link_libraries (testsuite 
