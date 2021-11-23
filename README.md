@@ -36,6 +36,11 @@ https://www.youtube.com/watch?v=nlKcXPUJGwA&list=PLalVdRk2RC6o5GHu618ARWh0VO0bFl
 On NAS you need to load cmake module
 > module use /nasa/modulefiles/testing; module load pkgsrc/2021Q1 
 
+Also Load modules for nvidia hpc
+- module load [path to nvidia modules on nas]
+- List of all modules for NVIDIA on NAS `ls -ltr /nasa/nvidia/hpc_sdk/modulefiles`
+- Loading the latest nvfortran compiler `module load /nasa/nvidia/hpc_sdk/modulefiles/nvhpc/21.7`
+
 Older cmake < 3.22 cannot include libraries to executables after they have been defined inside a function
 - Step 1 Configuring the build directory: run ./configure.sh script. This sets up the makefile.
 - Step 2 Building the code: run ./build.sh script which navigates to the build directory and calls make
