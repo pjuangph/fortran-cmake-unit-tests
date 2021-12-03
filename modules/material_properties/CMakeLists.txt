@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.13)
-
 set(LIBRARY_NAME "lib_material_properties")
 # Add the source files
 add_library(${LIBRARY_NAME} STATIC 

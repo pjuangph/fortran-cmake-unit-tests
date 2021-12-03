@@ -46,11 +46,11 @@ the function add_fortran_test_executable ]]
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules) 
 INCLUDE(${CMAKE_MODULE_PATH}/SetCTest.cmake) # <- add any libraries to this file
 
-add_fortran_test_executable (
-    testsuite
-    "tests/test_dry_air.f90"
-    "tests/test_helloworld.f90"
-    )
+# add_fortran_test_executable (
+#     testsuite
+#     "tests/test_dry_air.f90"
+#     "tests/test_helloworld.f90"
+#     )
 
 # # Link libraries to testsuite - this works with latest version of cmake 
 # target_link_libraries (testsuite 
