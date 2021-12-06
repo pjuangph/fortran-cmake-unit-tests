@@ -33,8 +33,8 @@ Check out this youtube playlist
 https://www.youtube.com/watch?v=nlKcXPUJGwA&list=PLalVdRk2RC6o5GHu618ARWh0VO0bFlif4&t=0s
 
 # How to compile
-On NAS you need to load cmake module
-> module use /nasa/modulefiles/testing; module load pkgsrc/2021Q1 
+On NAS you need to load cmake module. Ctest may only be available on pfe26 and pfe27. These are the toss operating system https://www.nas.nasa.gov/hecc/support/kb/news/testing-period-for-toss-operating-system-migration_611.html
+> module use /nasa/modulefiles/testing; module load pkgsrc/2021Q2 
 
 Also Load modules for nvidia hpc
 - module load [path to nvidia modules on nas]
